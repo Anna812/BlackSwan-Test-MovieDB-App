@@ -6,14 +6,6 @@ Write an app that loads the most popular movies from theMovieDb.com and displays
 
 **The Moviedb.org is an online database that lets you: browse and rate movies, TV shows and people.
 
-### Submission notes
-
-Code **MUST** be submitted through any distributed version control system.
-
-**Any other way of code submission will be an automatic failure. Eg. zip/rar or similar** 
-  
-Create a public Git repository for free on [Github](https://github.com) or [Bitbucket](https://bitbucket.org) or [Gitlab](https://gitlab.com) and send the link in email to andras.kloczl@blackswan.com with subject: "Greenfox Android Test: *YOUR NAME*"
-
 ### Task:
 
 Create app that will:
