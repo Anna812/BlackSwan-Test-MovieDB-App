@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitHelper {
 
-    public static final String API_KEY = "api_key";
+    public static final String API_KEY = "3f9d94eb43a27dcf62fe92f1b127df6c";
     public static final String MOVIE_DB_API_KEY = "0a08e38b874d0aa2d426ffc04357069d";
     public static final String MOVIE_DB_BASE_URL = "https://api.themoviedb.org/3/";
 
