@@ -51,4 +51,12 @@ public class Movie implements Serializable {
     @SerializedName("vote_average")
     private float averageVote;
 
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
 }
