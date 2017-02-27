@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.annadalnoki.androidtest.models.LoadPopularMoviesResponse;
 import com.annadalnoki.androidtest.models.Movie;
 
 import java.util.List;
@@ -21,9 +20,9 @@ public class MovieListAdapter extends RecyclerView.Adapter<ViewHolder> {
     private List<Movie> movies;
     private Context context;
 
-    public MovieListAdapter(Context context, LoadPopularMoviesResponse loadPopularMoviesResponse) {
+    public MovieListAdapter(Context context, List<Movie> movies) {
         this.context = context;
-        movies = loadPopularMoviesResponse.getMovies();
+        this.movies = movies;
     }
 
     @Override
@@ -40,11 +39,12 @@ public class MovieListAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Movie movie = movies.get(position);
+
         TextView title = holder.title;
         title.setText(movie.getTitle());
 
         TextView description = holder.description;
-        title.setText(movie.getOverview());
+        description.setText(movie.getOverview());
     }
 
     @Override
