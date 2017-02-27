@@ -10,10 +10,10 @@
         android:id="@+id/card"
         android:layout_gravity="center"
         android:layout_width="371dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.01"
+        android:layout_height="260dp"
         android:layout_marginTop="5dp"
-        android:clickable="false" >
+        android:clickable="false"
+        android:layout_weight="0.04">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -42,27 +42,26 @@
                 android:text="Best movie ever!"
                 android:id="@+id/description"
                 android:layout_width="236dp"
-                android:layout_height="110dp"
                 android:layout_marginTop="28dp"
+                android:background="@drawable/bottom_border"
                 android:layout_below="@+id/genre"
                 android:layout_alignParentEnd="true"
-                android:background="@drawable/bottom_border" />
+                android:layout_height="160dp" />
 
             <TextView
                 android:text="More Info"
                 android:id="@+id/info"
                 android:layout_width="wrap_content"
-                android:layout_below="@+id/description"
-                android:layout_alignStart="@+id/description"
-                android:layout_alignParentEnd="true"
                 android:textAlignment="textStart"
                 android:layout_height="40dp"
                 android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:textColor="#000" />
+                android:paddingTop="14dp"
+                android:textColor="#000"
+                android:layout_below="@+id/description"
+                android:layout_alignStart="@+id/description"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true" />
 
         </RelativeLayout>
-
     </android.support.v7.widget.CardView>
-
 </LinearLayout>
