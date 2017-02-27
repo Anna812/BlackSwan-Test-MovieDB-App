@@ -19,5 +19,8 @@ public class LoadPopularMoviesResponse implements Serializable {
     @SerializedName("total_pages")
     private int totalPages;
 
+    public List<Movie> getMovies() {
+        return movies;
+    }
 }
 
