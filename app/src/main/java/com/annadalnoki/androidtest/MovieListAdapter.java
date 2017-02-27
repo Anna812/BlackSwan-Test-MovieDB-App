@@ -2,7 +2,10 @@ package com.annadalnoki.androidtest;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.annadalnoki.androidtest.models.LoadPopularMoviesResponse;
 import com.annadalnoki.androidtest.models.Movie;
@@ -25,16 +28,27 @@ public class MovieListAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        Context context = parent.getContext();
+        LayoutInflater inflater = LayoutInflater.from(context);
+
+        View movieList = inflater.inflate(R.layout.movie_card, parent, false);
+
+        ViewHolder viewHolder = new ViewHolder(movieList);
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        Movie movie = movies.get(position);
+        TextView title = holder.title;
+        title.setText(movie.getTitle());
 
+        TextView description = holder.description;
+        title.setText(movie.getOverview());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return movies.size();
     }
 }
