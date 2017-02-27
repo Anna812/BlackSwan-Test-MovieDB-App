@@ -11,9 +11,9 @@
     android:gravity="center"
     tools:context="com.annadalnoki.androidtest.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/movielist"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="Good luck have fun! :)" />
+        android:scrollbars="vertical" />
 </RelativeLayout>
