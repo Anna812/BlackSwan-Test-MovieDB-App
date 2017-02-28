@@ -59,4 +59,8 @@ public class Movie implements Serializable {
     public String getOverview() {
         return overview;
     }
+
+    public List<Integer> getGenreIdList() {
+        return genreIdList;
+    }
 }
