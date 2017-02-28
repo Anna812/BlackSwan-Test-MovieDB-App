@@ -41,22 +41,6 @@ public class MainActivity extends Activity {
         recyclerView = (RecyclerView) findViewById(R.id.movielist);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-
-            @Override
-            public void onTouchEvent(RecyclerView recycler, MotionEvent event) {
-                // Handle on touch events here
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-            }
-
-            @Override
-            public boolean onInterceptTouchEvent(RecyclerView recycler, MotionEvent event) {
-                return false;
-            }
-        });
     }
 
     private void loadGenres() {

@@ -11,7 +11,7 @@ import com.annadalnoki.androidtest.R;
  * Created by Anna on 17/02/27.
  */
 
-public class ViewHolder extends RecyclerView.ViewHolder {
+public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public TextView title, genre, description, rating, date;
     public ImageView image;
@@ -24,5 +24,11 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         rating = (TextView) itemView.findViewById(R.id.rating);
         date = (TextView) itemView.findViewById(R.id.date);
         description = (TextView) itemView.findViewById(R.id.description);
+    }
+
+    @Override
+    public void onClick(View view) {
+        int position = getAdapterPosition();
+
     }
 }
