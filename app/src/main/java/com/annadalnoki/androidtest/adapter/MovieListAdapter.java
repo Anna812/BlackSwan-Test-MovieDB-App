@@ -53,6 +53,8 @@ public class MovieListAdapter extends RecyclerView.Adapter<ViewHolder> {
         holder.title.setText(movie.getTitle());
         holder.description.setText(movie.getOverview());
         holder.genre.setText(defineGenre(movie));
+        holder.rating.setText(calculateRating(movie));
+        holder.date.setText(calculateReleaseDate(movie));
     }
 
     private void loadImage(Movie movie) {
@@ -72,5 +74,16 @@ public class MovieListAdapter extends RecyclerView.Adapter<ViewHolder> {
             }
         }
         return result;
+    }
+
+    private String calculateRating(Movie movie) {
+        Float temp = movie.getAverageVote();
+        return Float.toString(temp);
+    }
+
+    private String calculateReleaseDate(Movie movie) {
+        String temp = movie.getReleaseDateText();
+        String[] result = temp.split("-");
+        return result[0];
     }
 }
