@@ -13,7 +13,7 @@ import com.annadalnoki.androidtest.R;
 
 public class ViewHolder extends RecyclerView.ViewHolder {
 
-    public TextView title, genre, description;
+    public TextView title, genre, description, rating, date;
     public ImageView image;
 
     public ViewHolder(View itemView) {
@@ -21,6 +21,8 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         image = (ImageView) itemView.findViewById(R.id.image);
         title = (TextView) itemView.findViewById(R.id.title);
         genre = (TextView) itemView.findViewById(R.id.genre);
+        rating = (TextView) itemView.findViewById(R.id.rating);
+        date = (TextView) itemView.findViewById(R.id.date);
         description = (TextView) itemView.findViewById(R.id.description);
     }
 }
