@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.annadalnoki.androidtest.R;
 import com.annadalnoki.androidtest.adapter.MovieListAdapter;
+import com.annadalnoki.androidtest.models.Genre;
 import com.annadalnoki.androidtest.models.LoadPopularMoviesResponse;
 import com.annadalnoki.androidtest.models.Movie;
 import com.annadalnoki.androidtest.network.MovieDbManager;
@@ -22,6 +23,7 @@ public class MainActivity extends Activity {
 
     RecyclerView recyclerView;
     List<Movie> movies;
+    List<Genre> genres;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,29 +31,46 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         recyclerView = (RecyclerView) findViewById(R.id.movielist);
         startCallForList();
+        loadGenres();
     }
 
 
     private void startCallForList(){
         MovieDbManager.getInstance().loadPopularMovies(1,new Callback<LoadPopularMoviesResponse>() {
 
-        @Override
-        public void onResponse
-        (Call <LoadPopularMoviesResponse> call, Response <LoadPopularMoviesResponse> response){
-            LoadPopularMoviesResponse loadedMovies = response.body();
-            movies = loadedMovies.getMovies();
-            setupAdapter();
-        }
+            @Override
+            public void onResponse
+            (Call <LoadPopularMoviesResponse> call, Response <LoadPopularMoviesResponse> response){
+                LoadPopularMoviesResponse loadedMovies = response.body();
+                movies = loadedMovies.getMovies();
+                setupAdapter();
+            }
 
-        @Override
-        public void onFailure (Call < LoadPopularMoviesResponse > call, Throwable t){
-            Toast.makeText(MainActivity.this, "Error: " + t.toString(), Toast.LENGTH_SHORT).show();
-        }
-    });
-}
+            @Override
+            public void onFailure (Call < LoadPopularMoviesResponse > call, Throwable t){
+                Toast.makeText(MainActivity.this, "Error: " + t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void loadGenres() {
+        MovieDbManager.getInstance().loadGenreList(new Callback<List<Genre>>() {
+
+            @Override
+            public void onResponse
+                (Call<List<Genre>> call, Response<List<Genre>> response){
+                genres = response.body();
+            }
+
+            @Override
+            public void onFailure (Call <List<Genre>> call, Throwable t){
+                Toast.makeText(MainActivity.this, "Error: " + t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     private void setupAdapter() {
-        MovieListAdapter movieListAdapter = new MovieListAdapter(this, movies);
+        MovieListAdapter movieListAdapter = new MovieListAdapter(this, movies, genres);
         recyclerView.setAdapter(movieListAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
