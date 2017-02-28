@@ -8,7 +8,8 @@ import android.widget.Toast;
 
 import com.annadalnoki.androidtest.R;
 import com.annadalnoki.androidtest.adapter.MovieListAdapter;
-import com.annadalnoki.androidtest.models.GenreList;
+import com.annadalnoki.androidtest.models.Genre;
+import com.annadalnoki.androidtest.models.GenreListResponse;
 import com.annadalnoki.androidtest.models.LoadPopularMoviesResponse;
 import com.annadalnoki.androidtest.models.Movie;
 import com.annadalnoki.androidtest.network.MovieDbManager;
@@ -23,17 +24,36 @@ public class MainActivity extends Activity {
 
     RecyclerView recyclerView;
     List<Movie> movies;
-    GenreList genres;
+    List<Genre> genres;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = (RecyclerView) findViewById(R.id.movielist);
-        startCallForList();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         loadGenres();
+        startCallForList();
     }
 
+    private void loadGenres() {
+        MovieDbManager.getInstance().loadGenreList(new Callback<GenreListResponse>() {
+
+            @Override
+            public void onResponse
+                    (Call<GenreListResponse> call, Response<GenreListResponse> response){
+                GenreListResponse genrelist = response.body();
+                genres = genrelist.getGenres();
+
+            }
+
+            @Override
+            public void onFailure (Call <GenreListResponse> call, Throwable t){
+                Toast.makeText(MainActivity.this, "Error: " + t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     private void startCallForList(){
         MovieDbManager.getInstance().loadPopularMovies(1,new Callback<LoadPopularMoviesResponse>() {
@@ -53,25 +73,9 @@ public class MainActivity extends Activity {
         });
     }
 
-    private void loadGenres() {
-        MovieDbManager.getInstance().loadGenreList(new Callback<GenreList>() {
-
-            @Override
-            public void onResponse
-                (Call<GenreList> call, Response<GenreList> response){
-                genres = response.body();
-            }
-
-            @Override
-            public void onFailure (Call <GenreList> call, Throwable t){
-                Toast.makeText(MainActivity.this, "Error: " + t.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     private void setupAdapter() {
         MovieListAdapter movieListAdapter = new MovieListAdapter(this, movies, genres);
         recyclerView.setAdapter(movieListAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }

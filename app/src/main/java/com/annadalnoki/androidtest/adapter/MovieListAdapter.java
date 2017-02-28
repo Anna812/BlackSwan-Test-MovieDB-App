@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import com.annadalnoki.androidtest.R;
 import com.annadalnoki.androidtest.models.Genre;
-import com.annadalnoki.androidtest.models.GenreList;
 import com.annadalnoki.androidtest.models.Movie;
 import com.squareup.picasso.Picasso;
 
@@ -25,10 +24,10 @@ public class MovieListAdapter extends RecyclerView.Adapter<ViewHolder> {
     private Context context;
     private ViewHolder holder;
 
-    public MovieListAdapter(Context context, List<Movie> movies, GenreList genres) {
+    public MovieListAdapter(Context context, List<Movie> movies, List<Genre> genres) {
         this.context = context;
         this.movies = movies;
-        this.genres = genres.getGenres();
+        this.genres = genres;
     }
 
     @Override
@@ -59,6 +58,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<ViewHolder> {
     private void loadImage(Movie movie) {
         Picasso.with(context)
                 .load("http://image.tmdb.org/t/p/w342/" + movie.getPosterPath())
+                .placeholder(R.mipmap.ic_launcher)
                 .into(holder.image);
     }
 

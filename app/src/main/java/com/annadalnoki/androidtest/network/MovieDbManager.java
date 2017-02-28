@@ -1,6 +1,6 @@
 package com.annadalnoki.androidtest.network;
 
-import com.annadalnoki.androidtest.models.GenreList;
+import com.annadalnoki.androidtest.models.GenreListResponse;
 import com.annadalnoki.androidtest.models.LoadPopularMoviesResponse;
 
 import retrofit2.Callback;
@@ -34,7 +34,7 @@ public class MovieDbManager {
         movieDbApi.getPopularMovies(page).enqueue(callback);
     }
 
-    public void loadGenreList(Callback<GenreList> callback) {
+    public void loadGenreList(Callback<GenreListResponse> callback) {
         movieDbApi.getGenres().enqueue(callback);
     }
 }
