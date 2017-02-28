@@ -9,73 +9,78 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="254dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="5px"
         android:elevation="8dp"
         android:translationZ="8dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp">
-
-        <RelativeLayout
+        android:layout_marginBottom="15px"
+        android:layout_marginLeft="5px"
+        android:layout_marginRight="5px">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:translationZ="@dimen/cardview_default_elevation">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="342px"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <TextView
-                android:text="Chihiro"
-                android:id="@+id/title"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:maxLength="15"
-                android:ellipsize="end"
-                android:layout_toEndOf="@+id/image"
-                android:layout_width="400px" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:translationZ="@dimen/cardview_default_elevation">
 
-            <TextView
-                android:text="Animation"
-                android:id="@+id/genre"
-                android:layout_height="wrap_content"
-                android:textColor="#80323232"
-                android:layout_below="@+id/title"
-                android:layout_alignParentEnd="true"
-                android:layout_toEndOf="@+id/image"
-                android:layout_width="400px"
-                android:maxLines="1"
-                android:ellipsize="end"/>
 
-            <TextView
-                android:text="Best movie ever!"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/genre"
-                android:id="@+id/description"
-                android:layout_alignParentEnd="true"
-                android:layout_above="@+id/info"
-                android:maxLines="9"
-                android:ellipsize="end"
-                android:layout_toEndOf="@+id/image"
-                android:layout_width="400px"
-                android:paddingRight="5px" />
+                <TextView
+                    android:text="Animation"
+                    android:id="@+id/genre"
+                    android:layout_height="wrap_content"
+                    android:textColor="#80323232"
+                    android:layout_below="@+id/title"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@+id/image"
+                    android:layout_width="match_parent"
+                    android:maxLines="1"
+                    android:ellipsize="end"/>
 
-            <TextView
-                android:text="More Info"
-                android:id="@+id/info"
-                android:textAlignment="textStart"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:textColor="#000"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:paddingBottom="10dp"
-                android:layout_width="350px" />
-        </RelativeLayout>
+                <TextView
+                    android:text="Best movie ever!"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/genre"
+                    android:id="@+id/description"
+                    android:layout_alignParentEnd="true"
+                    android:layout_above="@+id/info"
+                    android:maxLines="9"
+                    android:ellipsize="end"
+                    android:layout_toEndOf="@+id/image"
+                    android:layout_width="match_parent"
+                    android:paddingRight="5px" />
+
+                <TextView
+                    android:text="More Info"
+                    android:id="@+id/info"
+                    android:textAlignment="textStart"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:textColor="#000"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:paddingBottom="10dp"
+                    android:layout_width="match_parent" />
+
+                <TextView
+                    android:text="Chihiro"
+                    android:id="@+id/title"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:maxLength="15"
+                    android:ellipsize="end"
+                    android:layout_width="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+
+            </RelativeLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>
