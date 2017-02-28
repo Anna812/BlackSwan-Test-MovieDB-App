@@ -25,12 +25,13 @@ import retrofit2.Response;
 public class MovieListAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private List<Movie> movies;
-    private List<Genre> genres;
+//    private List<Genre> genres;
     Context context;
 
     public MovieListAdapter(Context context, List<Movie> movies) {
         this.context = context;
         this.movies = movies;
+//        loadGenres();
     }
 
     @Override
@@ -41,25 +42,24 @@ public class MovieListAdapter extends RecyclerView.Adapter<ViewHolder> {
         View movieList = inflater.inflate(R.layout.movie_card, parent, false);
         ViewHolder viewHolder = new ViewHolder(movieList);
 
-        loadGenres();
         return viewHolder;
     }
 
-    private void loadGenres() {
-        MovieDbManager.getInstance().loadGenreList(new Callback<List<Genre>>() {
-
-            @Override
-            public void onResponse
-                    (Call<List<Genre>> call, Response<List<Genre>> response){
-                    genres = response.body();
-            }
-
-            @Override
-            public void onFailure (Call <List<Genre>> call, Throwable t){
-                Toast.makeText(context, "Error: " + t.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+//    private void loadGenres() {
+//        MovieDbManager.getInstance().loadGenreList(new Callback<List<Genre>>() {
+//
+//            @Override
+//            public void onResponse
+//                (Call<List<Genre>> call, Response<List<Genre>> response){
+//                genres = response.body();
+//            }
+//
+//            @Override
+//            public void onFailure (Call <List<Genre>> call, Throwable t){
+//                Toast.makeText(context, "Error: " + t.toString(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
@@ -67,20 +67,20 @@ public class MovieListAdapter extends RecyclerView.Adapter<ViewHolder> {
 
         holder.title.setText(movie.getTitle());
         holder.description.setText(movie.getOverview());
-        holder.genre.setText(defineGenre(movie));
+//        holder.genre.setText(defineGenre(movie));
     }
 
-    private String defineGenre(Movie movie) {
-        String result = "";
-        for (int temp : movie.getGenreIdList()) {
-            for (Genre genre : genres) {
-                if(temp == genre.getId()) {
-                    result += genre.getName() + ", ";
-                }
-            }
-        }
-        return result;
-    }
+//    private String defineGenre(Movie movie) {
+//        String result = "";
+//        for (int temp : movie.getGenreIdList()) {
+//            for (Genre genre : genres) {
+//                if(temp == genre.getId()) {
+//                    result += genre.getName() + ", ";
+//                }
+//            }
+//        }
+//        return result;
+//    }
 
     @Override
     public int getItemCount() {
