@@ -1,6 +1,9 @@
 package com.annadalnoki.androidtest.network;
 
+import com.annadalnoki.androidtest.models.Genre;
 import com.annadalnoki.androidtest.models.LoadPopularMoviesResponse;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -10,4 +13,7 @@ public interface MovieDbApi {
 
     @GET("movie/popular")
     Call<LoadPopularMoviesResponse> getPopularMovies(@Query("page") int page);
+
+    @GET("/genre/movie/list")
+    Call<List<Genre>> getGenres();
 }
