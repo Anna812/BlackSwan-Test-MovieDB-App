@@ -1,4 +1,4 @@
-package com.annadalnoki.androidtest;
+package com.annadalnoki.androidtest.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import com.annadalnoki.androidtest.R;
+import com.annadalnoki.androidtest.adapter.MovieListAdapter;
 import com.annadalnoki.androidtest.models.LoadPopularMoviesResponse;
 import com.annadalnoki.androidtest.models.Movie;
 import com.annadalnoki.androidtest.network.MovieDbManager;
@@ -32,6 +34,7 @@ public class MainActivity extends Activity {
 
     private void startCallForList(){
         MovieDbManager.getInstance().loadPopularMovies(1,new Callback<LoadPopularMoviesResponse>() {
+
         @Override
         public void onResponse
         (Call <LoadPopularMoviesResponse> call, Response <LoadPopularMoviesResponse> response){
