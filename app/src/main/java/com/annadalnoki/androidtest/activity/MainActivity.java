@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.annadalnoki.androidtest.R;
 import com.annadalnoki.androidtest.adapter.MovieListAdapter;
-import com.annadalnoki.androidtest.models.Genre;
+import com.annadalnoki.androidtest.models.GenreList;
 import com.annadalnoki.androidtest.models.LoadPopularMoviesResponse;
 import com.annadalnoki.androidtest.models.Movie;
 import com.annadalnoki.androidtest.network.MovieDbManager;
@@ -23,7 +23,7 @@ public class MainActivity extends Activity {
 
     RecyclerView recyclerView;
     List<Movie> movies;
-    List<Genre> genres;
+    GenreList genres;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,16 +54,16 @@ public class MainActivity extends Activity {
     }
 
     private void loadGenres() {
-        MovieDbManager.getInstance().loadGenreList(new Callback<List<Genre>>() {
+        MovieDbManager.getInstance().loadGenreList(new Callback<GenreList>() {
 
             @Override
             public void onResponse
-                (Call<List<Genre>> call, Response<List<Genre>> response){
+                (Call<GenreList> call, Response<GenreList> response){
                 genres = response.body();
             }
 
             @Override
-            public void onFailure (Call <List<Genre>> call, Throwable t){
+            public void onFailure (Call <GenreList> call, Throwable t){
                 Toast.makeText(MainActivity.this, "Error: " + t.toString(), Toast.LENGTH_SHORT).show();
             }
         });

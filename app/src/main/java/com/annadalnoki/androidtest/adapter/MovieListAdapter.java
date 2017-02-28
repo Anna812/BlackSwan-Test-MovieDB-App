@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.annadalnoki.androidtest.R;
 import com.annadalnoki.androidtest.models.Genre;
+import com.annadalnoki.androidtest.models.GenreList;
 import com.annadalnoki.androidtest.models.Movie;
 import com.squareup.picasso.Picasso;
 
@@ -24,10 +25,10 @@ public class MovieListAdapter extends RecyclerView.Adapter<ViewHolder> {
     private Context context;
     private ViewHolder holder;
 
-    public MovieListAdapter(Context context, List<Movie> movies, List<Genre> genres) {
+    public MovieListAdapter(Context context, List<Movie> movies, GenreList genres) {
         this.context = context;
         this.movies = movies;
-        this.genres = genres;
+        this.genres = genres.getGenres();
     }
 
     @Override
@@ -52,7 +53,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<ViewHolder> {
         loadImage(movie);
         holder.title.setText(movie.getTitle());
         holder.description.setText(movie.getOverview());
-//        holder.genre.setText(defineGenre(movie));
+        holder.genre.setText(defineGenre(movie));
     }
 
     private void loadImage(Movie movie) {
@@ -72,5 +73,4 @@ public class MovieListAdapter extends RecyclerView.Adapter<ViewHolder> {
         }
         return result;
     }
-
 }
