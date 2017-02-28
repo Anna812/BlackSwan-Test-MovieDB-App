@@ -59,7 +59,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private void loadImage(Movie movie) {
         Picasso.with(context)
-                .load("http://image.tmdb.org/t/p/w342/" + movie.getPosterPath())
+                .load("https://image.tmdb.org/t/p/w342" + movie.getPosterPath())
                 .placeholder(R.mipmap.ic_launcher)
                 .into(holder.image);
     }
