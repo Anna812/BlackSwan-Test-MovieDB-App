@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 import android.widget.Toast;
 
 import com.annadalnoki.androidtest.R;
@@ -30,11 +31,32 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerView = (RecyclerView) findViewById(R.id.movielist);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        setupRecyclerView();
         loadGenres();
         startCallForList();
+    }
+
+    private void setupRecyclerView() {
+        recyclerView = (RecyclerView) findViewById(R.id.movielist);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+
+            @Override
+            public void onTouchEvent(RecyclerView recycler, MotionEvent event) {
+                // Handle on touch events here
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+            }
+
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView recycler, MotionEvent event) {
+                return false;
+            }
+        });
     }
 
     private void loadGenres() {
