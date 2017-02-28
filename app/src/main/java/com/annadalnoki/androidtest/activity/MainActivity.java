@@ -1,10 +1,12 @@
 package com.annadalnoki.androidtest.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 import android.widget.Toast;
 
 import com.annadalnoki.androidtest.R;
@@ -48,6 +50,30 @@ public class MainActivity extends Activity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         movieListAdapter = new MovieListAdapter(this, movies, genres);
         recyclerView.setAdapter(movieListAdapter);
+
+        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+
+            @Override
+            public void onTouchEvent(RecyclerView recycler, MotionEvent event) {
+                Movie movie = movies.get(recycler.getChildCount());
+                Intent i = new Intent(getApplicationContext(), DetailedPageActivity.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("movie", movie);
+                i.putExtra("movie", bundle);
+
+                startActivity(i);
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+            }
+
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView recycler, MotionEvent event) {
+                return false;
+            }
+        });
     }
 
     private void loadGenres() {
