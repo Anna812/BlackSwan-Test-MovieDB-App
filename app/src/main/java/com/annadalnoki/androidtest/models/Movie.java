@@ -63,4 +63,8 @@ public class Movie implements Serializable {
     public List<Integer> getGenreIdList() {
         return genreIdList;
     }
+
+    public String getPosterPath() {
+        return posterPath;
+    }
 }
