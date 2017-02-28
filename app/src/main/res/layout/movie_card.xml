@@ -9,12 +9,10 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="254dp"
-        android:layout_marginTop="5px"
         android:elevation="8dp"
         android:translationZ="8dp"
-        android:layout_marginBottom="15px"
-        android:layout_marginLeft="5px"
-        android:layout_marginRight="5px">
+        android:layout_marginBottom="15dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -36,24 +34,11 @@
                     android:layout_height="wrap_content"
                     android:textColor="#80323232"
                     android:layout_below="@+id/title"
-                    android:layout_alignParentEnd="true"
-                    android:layout_toEndOf="@+id/image"
                     android:layout_width="match_parent"
                     android:maxLines="1"
-                    android:ellipsize="end"/>
-
-                <TextView
-                    android:text="Best movie ever!"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/genre"
-                    android:id="@+id/description"
-                    android:layout_alignParentEnd="true"
-                    android:layout_above="@+id/info"
-                    android:maxLines="9"
                     android:ellipsize="end"
-                    android:layout_toEndOf="@+id/image"
-                    android:layout_width="match_parent"
-                    android:paddingRight="5px" />
+                    android:layout_toStartOf="@+id/date"
+                    android:maxLength="20" />
 
                 <TextView
                     android:text="More Info"
@@ -67,18 +52,6 @@
                     android:layout_alignParentEnd="true"
                     android:paddingBottom="10dp"
                     android:layout_width="match_parent" />
-
-                <TextView
-                    android:text="Chihiro"
-                    android:id="@+id/title"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:maxLength="15"
-                    android:ellipsize="end"
-                    android:layout_width="match_parent"
-                    android:layout_alignParentTop="true"
-                    android:layout_toStartOf="@+id/rating" />
 
                 <TextView
                     android:text="5,3"
@@ -108,16 +81,40 @@
                     android:textColor="#80323232"
                     android:layout_below="@+id/title"
                     android:layout_alignBottom="@+id/imageView2"
-                    android:layout_marginTop="20px" />
+                    android:layout_marginTop="0dp" />
+
+                <TextView
+                    android:text="Best movie ever!"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/description"
+                    android:maxLines="9"
+                    android:ellipsize="end"
+                    android:layout_width="match_parent"
+                    android:paddingRight="5px"
+                    android:layout_below="@+id/genre"
+                    android:layout_alignParentStart="true"
+                    android:paddingTop="5px" />
 
                 <ImageView
                     android:src="@android:drawable/ic_menu_my_calendar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/rating"
-                    android:layout_alignParentEnd="true"
                     android:id="@+id/imageView2"
-                    android:layout_toEndOf="@+id/rating" />
+                    android:layout_below="@+id/imageView"
+                    android:layout_alignParentEnd="true"
+                    android:layout_above="@+id/description" />
+
+                <TextView
+                    android:text="Chihiro"
+                    android:id="@+id/title"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:maxLength="15"
+                    android:ellipsize="end"
+                    android:layout_width="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
 
             </RelativeLayout>
         </LinearLayout>
