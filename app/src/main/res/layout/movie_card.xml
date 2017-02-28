@@ -33,18 +33,6 @@
 
 
                 <TextView
-                    android:text="Chihiro"
-                    android:id="@+id/title"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:maxLength="15"
-                    android:ellipsize="end"
-                    android:layout_width="match_parent"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentStart="true" />
-
-                <TextView
                     android:text="Animation"
                     android:id="@+id/genre"
                     android:layout_height="wrap_content"
@@ -57,16 +45,18 @@
                     android:maxLength="20" />
 
                 <TextView
-                    android:text="Best movie ever!"
+                    android:text="More Info"
+                    android:id="@+id/info"
+                    android:textAlignment="textStart"
                     android:layout_height="wrap_content"
-                    android:id="@+id/description"
-                    android:maxLines="9"
-                    android:ellipsize="end"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:textColor="#000"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:paddingBottom="10dp"
                     android:layout_width="match_parent"
-                    android:paddingRight="5px"
-                    android:layout_below="@+id/genre"
-                    android:layout_alignParentStart="true"
-                    android:paddingTop="5px" />
+                    android:background="#66b266" />
 
                 <TextView
                     android:text="5,3"
@@ -98,6 +88,18 @@
                     android:layout_alignBottom="@+id/imageView2"
                     android:layout_marginTop="0dp" />
 
+                <TextView
+                    android:text="Best movie ever!"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/description"
+                    android:maxLines="9"
+                    android:ellipsize="end"
+                    android:layout_width="match_parent"
+                    android:paddingRight="5px"
+                    android:layout_below="@+id/genre"
+                    android:layout_alignParentStart="true"
+                    android:paddingTop="5px" />
+
                 <ImageView
                     android:src="@android:drawable/ic_menu_my_calendar"
                     android:layout_width="wrap_content"
@@ -108,19 +110,16 @@
                     android:layout_above="@+id/description" />
 
                 <TextView
-                    android:text="More Info"
-                    android:id="@+id/info"
-                    android:textAlignment="textStart"
+                    android:text="Chihiro"
+                    android:id="@+id/title"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:textColor="#000"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentEnd="true"
-                    android:paddingBottom="10dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:maxLength="15"
+                    android:ellipsize="end"
                     android:layout_width="match_parent"
-                    android:background="#66b266"
-                    android:onClick="redirectToDetailedPage" />
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
 
             </RelativeLayout>
         </LinearLayout>
