@@ -10,7 +10,6 @@ import com.annadalnoki.androidtest.models.LoadPopularMoviesResponse;
 import com.annadalnoki.androidtest.models.Movie;
 import com.annadalnoki.androidtest.network.MovieDbManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -26,23 +25,27 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         recyclerView = (RecyclerView) findViewById(R.id.movielist);
-
-        MovieDbManager.getInstance().loadPopularMovies(1, new Callback<LoadPopularMoviesResponse>() {
-            @Override
-            public void onResponse(Call<LoadPopularMoviesResponse> call, Response<LoadPopularMoviesResponse> response) {
-                LoadPopularMoviesResponse loadedMovies = response.body();
-                movies = loadedMovies.getMovies();
-                setupAdapter();
-            }
-
-            @Override
-            public void onFailure(Call<LoadPopularMoviesResponse> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Error: " + t.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        startCallForList();
     }
+
+
+    private void startCallForList(){
+        MovieDbManager.getInstance().loadPopularMovies(1,new Callback<LoadPopularMoviesResponse>() {
+        @Override
+        public void onResponse
+        (Call <LoadPopularMoviesResponse> call, Response <LoadPopularMoviesResponse> response){
+            LoadPopularMoviesResponse loadedMovies = response.body();
+            movies = loadedMovies.getMovies();
+            setupAdapter();
+        }
+
+        @Override
+        public void onFailure (Call < LoadPopularMoviesResponse > call, Throwable t){
+            Toast.makeText(MainActivity.this, "Error: " + t.toString(), Toast.LENGTH_SHORT).show();
+        }
+    });
+}
 
     private void setupAdapter() {
         MovieListAdapter movieListAdapter = new MovieListAdapter(this, movies);
