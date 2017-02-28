@@ -67,4 +67,12 @@ public class Movie implements Serializable {
     public String getPosterPath() {
         return posterPath;
     }
+
+    public float getAverageVote() {
+        return averageVote;
+    }
+
+    public String getReleaseDateText() {
+        return releaseDateText;
+    }
 }
