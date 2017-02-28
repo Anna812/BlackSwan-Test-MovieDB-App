@@ -25,7 +25,11 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:translationZ="@dimen/cardview_default_elevation">
+                android:translationZ="@dimen/cardview_default_elevation"
+                android:paddingBottom="5px"
+                android:paddingEnd="5px"
+                android:paddingLeft="5px"
+                android:paddingRight="5px">
 
 
                 <TextView
