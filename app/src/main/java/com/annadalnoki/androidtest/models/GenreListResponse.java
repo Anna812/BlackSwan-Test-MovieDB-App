@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Anna on 17/02/28.
  */
 
-public class GenreList implements Serializable{
+public class GenreListResponse implements Serializable {
 
     @SerializedName("genres")
     List<Genre> genres;
