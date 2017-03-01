@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.annadalnoki.androidtest.R;
 import com.annadalnoki.androidtest.models.Genre;
 import com.annadalnoki.androidtest.models.Movie;
+import com.annadalnoki.androidtest.network.MovieDbManager;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -59,8 +60,9 @@ public class MovieListAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private void loadImage(Movie movie) {
         Picasso.with(context)
-                .load("https://image.tmdb.org/t/p/w342" + movie.getPosterPath())
+                .load(MovieDbManager.IMAGE_BASE_URL + movie.getPosterPath())
                 .placeholder(R.mipmap.ic_launcher)
+                .error(R.mipmap.ic_launcher)
                 .into(holder.image);
     }
 
