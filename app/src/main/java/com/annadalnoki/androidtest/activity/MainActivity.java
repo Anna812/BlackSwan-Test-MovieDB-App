@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
+import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.annadalnoki.androidtest.R;
+import com.annadalnoki.androidtest.RecyclerItemClickListener;
 import com.annadalnoki.androidtest.adapter.MovieListAdapter;
 import com.annadalnoki.androidtest.models.Genre;
 import com.annadalnoki.androidtest.models.GenreListResponse;
@@ -51,29 +53,21 @@ public class MainActivity extends Activity {
         movieListAdapter = new MovieListAdapter(this, movies, genres);
         recyclerView.setAdapter(movieListAdapter);
 
-        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, recyclerView,
+                new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        Log.e("Main", "onitemtouch");
+                        Intent i = new Intent(getApplicationContext(), DetailedPageActivity.class);
+                        Bundle movieToShow = new Bundle();
+                        movieToShow.putSerializable("movie", movies.get(position));
+                        i.putExtra("movie", movieToShow);
+                        startActivity(i);
+                    }
 
-            @Override
-            public void onTouchEvent(RecyclerView recycler, MotionEvent event) {
-                Movie movie = movies.get(recycler.getChildCount());
-                Intent i = new Intent(getApplicationContext(), DetailedPageActivity.class);
-
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("movie", movie);
-                i.putExtra("movie", bundle);
-
-                startActivity(i);
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-            }
-
-            @Override
-            public boolean onInterceptTouchEvent(RecyclerView recycler, MotionEvent event) {
-                return false;
-            }
-        });
+                    @Override public void onLongItemClick(View view, int position) {
+                    }
+                })
+        );
     }
 
     private void loadGenres() {
